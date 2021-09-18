@@ -16,6 +16,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import moment from "moment";
+
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(2),
@@ -23,6 +25,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 function App() {
+  const today= moment().format("DD-MM-YYYY");
+  console.log(today);
 const [states,setStates]=  React.useState([]);
 const [districts,setDistricts]=  React.useState([]);
   // const states=  fetch('https://cdn-api.co-vin.in/api/v2/admin/location/states').then((res)=>res.json()).then((json)=>{
@@ -34,7 +38,7 @@ const handleChangeState= async (event)=>{
 
   setState(event.target.value);
   
-  console.log(event.target.value);
+
   setDistricts( await fetch('https://cdn-api.co-vin.in/api/v2/admin/location/districts/'+event.target.value).then((res)=>res.json()).then((json)=>{
   return  json.districts;
 
@@ -42,7 +46,7 @@ const handleChangeState= async (event)=>{
 }
 const handleChangeDistrict=async (event)=>{
   setDistrict(event.target.value);
-  setResponse( await fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+event.target.value+'&date=18-09-2021').then((res)=>res.json()).then((json)=>{
+  setResponse( await fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+event.target.value+'&date='+today).then((res)=>res.json()).then((json)=>{
 return json.centers;
 
 }))
@@ -57,14 +61,14 @@ return json.centers;
     }));
   };
 const [response,setResponse]=React.useState([]);
-  const [pin, setPin] = React.useState('756001');
+  const [pin, setPin] = React.useState('');
   const handleChangePin = (event) => {
     setPin(event.target.value);
   };
  const handlesearch= async ()=>{
-console.log(pin);
 
- setResponse( await fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin'+'?pincode='+pin+'&date='+'18-09-2021').then((res)=>res.json()).then((json)=>{
+
+ setResponse( await fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin'+'?pincode='+pin+'&date='+today).then((res)=>res.json()).then((json)=>{
 return json.centers;
 
 }))
