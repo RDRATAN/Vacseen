@@ -49,8 +49,8 @@
 .pinform{
   vertical-align: middle;
 }
-.pinform input{
-  height: 5px;
+ .pinform button{
+  height: 54px;
 }
 .resultdiv{
   padding: 2%;
