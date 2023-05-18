@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import * as React from 'react';
 import './App.css';
 import TopNav from './TopNav';
@@ -7,7 +6,6 @@ import ToggleButton from '@mui/material/ToggleButton';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { experimentalStyled as styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Chip from '@mui/material/Chip';
@@ -97,7 +95,7 @@ const handlebook=()=>{
 <br/><br/>
     <div>{
 
-      alignment=='pin'?
+      alignment==='pin'?
       <div className='pinform'> 
       <TextField
      
@@ -154,15 +152,15 @@ const handlebook=()=>{
 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
       {response.map((element, index) => (
         <Grid item xs={12} sm={12} md={12} key={index} style={{textAlign:'left'}}>
-           <h4 style={{marginBottom:'1px'}}>{element.name} <Chip label={element.fee_type} color={element.fee_type=='Paid'?"primary":"success"} size="small" /></h4>
+           <h4 style={{marginBottom:'1px'}}>{element.name} <Chip label={element.fee_type} color={element.fee_type==='Paid'?"primary":"success"} size="small" /></h4>
            <p style={{marginTop:'1px'}}>{element.address},{element.block_name},{element.district_name},{element.state_name}-{element.pincode}</p>
           <Item style={{display:'flex'}}>
          
             {(element.sessions).map((e,index)=>{
 return <div className='slotdiv' style={{marginLeft:'10px'}}>
 <p style={{backgroundColor:'blue',color:'white'}}>{e.date}</p>
-<Chip onClick={e.available_capacity_dose1==0?null:handlebook} label={e.available_capacity_dose1?'Avl: '+e.available_capacity_dose1:'Booked'} color={e.available_capacity_dose1==0?"warning":'success'} size="small" avatar={<Avatar>D1</Avatar>} />
-<span>&nbsp;</span><Chip onClick={e.available_capacity_dose2==0?null:handlebook} label={e.available_capacity_dose2?'Avl: '+e.available_capacity_dose2:'Booked'} color={e.available_capacity_dose2==0?"warning":'success'} size="small" avatar={<Avatar>D2</Avatar>} />
+<Chip onClick={e.available_capacity_dose1===0?null:handlebook} label={e.available_capacity_dose1?'Avl: '+e.available_capacity_dose1:'Booked'} color={e.available_capacity_dose1==0?"warning":'success'} size="small" avatar={<Avatar>D1</Avatar>} />
+<span>&nbsp;</span><Chip onClick={e.available_capacity_dose2===0?null:handlebook} label={e.available_capacity_dose2?'Avl: '+e.available_capacity_dose2:'Booked'} color={e.available_capacity_dose2==0?"warning":'success'} size="small" avatar={<Avatar>D2</Avatar>} />
 <p>Age:{e.min_age_limit}{e.max_age_limit?'-'+e.max_age_limit:'+'}</p></div>
             })}
           
