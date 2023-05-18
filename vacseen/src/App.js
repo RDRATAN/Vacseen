@@ -66,7 +66,7 @@ const [response,setResponse]=React.useState([]);
  const handlesearch= async ()=>{
 
 
- setResponse( await fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin'+'?pincode='+pin+'&date='+today).then((res)=>res.json()).then((json)=>{
+ setResponse( await fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode='+pin+'&date='+today).then((res)=>res.json()).then((json)=>{
 return json.centers;
 
 }))
