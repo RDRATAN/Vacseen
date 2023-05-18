@@ -159,8 +159,8 @@ const handlebook=()=>{
             {(element.sessions).map((e,index)=>{
 return <div className='slotdiv' style={{marginLeft:'10px'}}>
 <p style={{backgroundColor:'blue',color:'white'}}>{e.date}</p>
-<Chip onClick={e.available_capacity_dose1===0?null:handlebook} label={e.available_capacity_dose1?'Avl: '+e.available_capacity_dose1:'Booked'} color={e.available_capacity_dose1==0?"warning":'success'} size="small" avatar={<Avatar>D1</Avatar>} />
-<span>&nbsp;</span><Chip onClick={e.available_capacity_dose2===0?null:handlebook} label={e.available_capacity_dose2?'Avl: '+e.available_capacity_dose2:'Booked'} color={e.available_capacity_dose2==0?"warning":'success'} size="small" avatar={<Avatar>D2</Avatar>} />
+<Chip onClick={e.available_capacity_dose1===0?null:handlebook} label={e.available_capacity_dose1?'Avl: '+e.available_capacity_dose1:'Booked'} color={e.available_capacity_dose1===0?"warning":'success'} size="small" avatar={<Avatar>D1</Avatar>} />
+<span>&nbsp;</span><Chip onClick={e.available_capacity_dose2===0?null:handlebook} label={e.available_capacity_dose2?'Avl: '+e.available_capacity_dose2:'Booked'} color={e.available_capacity_dose2===0?"warning":'success'} size="small" avatar={<Avatar>D2</Avatar>} />
 <p>Age:{e.min_age_limit}{e.max_age_limit?'-'+e.max_age_limit:'+'}</p></div>
             })}
           
